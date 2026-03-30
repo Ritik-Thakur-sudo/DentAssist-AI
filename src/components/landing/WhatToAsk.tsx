@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function WhatToAsk() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background to-muted/20">
+    <section id="what-to-ask" className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background to-muted/20">
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10 backdrop-blur-sm mb-6">

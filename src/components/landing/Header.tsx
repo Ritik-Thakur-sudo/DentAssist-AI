@@ -23,9 +23,9 @@ function Header() {
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8">
-                    <a href="#">How It Works</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">About</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#what-to-ask">About</a>
                 </div>
 
                 <div className="flex items-center gap-3">
