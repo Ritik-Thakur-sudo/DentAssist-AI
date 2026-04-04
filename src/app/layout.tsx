@@ -45,7 +45,8 @@ export default function RootLayout({
             }
           }}>
             <TooltipProvider>
-              <UserSync />
+              {/* done in home page component */}
+              {/* <UserSync /> */}
               <Toaster />
               {children}
             </TooltipProvider>
