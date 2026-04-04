@@ -83,8 +83,7 @@ export async function updateDoctor(input: UpdateDoctorInput) {
     if (!currentDoctor) {
       throw new Error("Doctor not found");
     }
-
-    // if email is being updated, check if the new email already exists for another doctor
+    
     if (input.email !== currentDoctor.email) {
       const exisitingDoctor = await prisma.doctor.findUnique({
         where: {
@@ -115,5 +114,33 @@ export async function updateDoctor(input: UpdateDoctorInput) {
   } catch (error: any) {
     console.error("Error updating doctor", error);
     throw new Error(error?.message || "Failed to update doctor");
+  }
+}
+
+export async function getAvailableDoctors() {
+  try {
+    const doctors = await prisma.doctor.findMany({
+      where: {
+        isActive: true,
+      },
+      include: {
+        _count: {
+          select: {
+            appointments: true,
+          },
+        },
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return doctors.map((doctor) => ({
+      ...doctor,
+      appointmentCount: doctor._count.appointments,
+    }));
+  } catch (error) {
+    console.error("Error fetching available doctors:", error);
+    throw new Error("Failed to fetch available doctors");
   }
 }
